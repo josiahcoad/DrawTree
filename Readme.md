@@ -15,16 +15,18 @@
 
 ### What needs done?
 * paper js
-	* click nodes to select them (show through them being "highlighted")
-	* when a node is highlighted and you click somewhere new, the line should go from the highlighted to the new node
-	* allow adding text inside the nodes
-	* make nodes grow with additional text
-	* make nodes autoformat vertically and horizontally into a nice binary tree when autoformat is turned on 
+	- [x] circles appear on screen where clicked
+	- [x] lines drawn between nodes when new node placed in a new place
+	- [ ] click nodes to select them (show through them being "highlighted")
+	- [ ] when a node is highlighted and you click somewhere new, the line should go from the highlighted to the new node
+	- [ ] allow adding text inside the nodes
+	- [ ] make nodes grow with additional text
+	- [ ] make nodes autoformat vertically and horizontally into a nice binary tree when autoformat is turned on 
 
 * page in general
-	* canvas screenshot button
-	* Binary Tree autoformat "switch" like this:
+	- [ ] canvas screenshot button
+	- [ ] Binary Tree autoformat "switch" like this:
 ![switch example](https://speckycdn-sdm.netdna-ssl.com/wp-content/uploads/2010/05/css_jquery_button_16.jpg)
-	- [ ] could have prefernce options for color, node shape, etc.
-	* open to all ideas!! Please add away... think what you would want to use:)
+	- [ ] could have preference options for color, node shape, etc.
+	- [ ] open to all ideas!! Please add away... think what you would want to use:)
 	
