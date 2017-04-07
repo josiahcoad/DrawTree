@@ -1,0 +1,596 @@
+
+/*=========================================================================
+===========================================================================
+                                                                          
+                      -------STYLES-------                           
+                                                                          
+===========================================================================
+===========================================================================*/
+
+
+
+
+
+/*==============================================================================
+	Navigation Bars
+==============================================================================*/
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: black;
+    cursor: pointer;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+
+/*==============================================================================
+	General Elements and Setup
+==============================================================================*/
+
+body {
+	overflow-y: hidden;
+	overflow-x: hidden;
+	font-family: "Raleway", sans-serif;
+	-webkit-transition: all 0.6s ease-in-out;
+	-moz-transition: all 0.6s ease-in-out;
+	-o-transition: all 0.6s ease-in-out;
+	-ms-transition: all 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
+}
+
+hr {
+	border-color: rgb(200,200,200);
+}
+
+canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 80vh;
+    height: 80vh;
+    position: relative;
+    top: 100px;
+    opacity: 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(150,150,150);
+	-webkit-transition: all 0.6s ease-in-out;
+	-moz-transition: all 0.6s ease-in-out;
+	-o-transition: all 0.6s ease-in-out;
+	-ms-transition: all 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
+}
+
+#part-name {
+	position: relative;
+	top: 70px;
+	font-size: 20px;
+	min-width: 30px;
+	max-width: 200px;
+	margin: auto;
+	margin-bottom: -20px;
+	padding: 2px;
+	text-align: center;
+    color: #818181;
+    opacity: 0;
+}
+
+#part-name:hover {
+	color: black;
+}
+
+#navigation-bar {
+	position: absolute;
+	top: -50px;
+}
+
+#company {
+	margin-top: -4px;
+	position: absolute;
+	left: -1000px;
+}
+
+#company #logoimg {
+	display: inline;
+}
+
+#dropdown {
+	margin-top: 60px;
+	font-size: 30px;
+	cursor: pointer;
+	width: 25px;
+	position: relative;
+	top: -50px;
+}
+
+
+/*Quicklinks*/
+.quicklink {
+	margin: -10px;
+	outline: 0 !important;
+}
+
+.quicklink:active {
+	background-color: rgb(180, 180, 180) !important;
+}
+
+
+
+/*==============================================================================
+	Help Popup
+==============================================================================*/
+#shortcut-list {
+	text-align: left;
+	height: 280px;
+	font-family: "Raleway";
+	border-color: rgb(28, 216, 65);
+}
+
+#shortcut-list dt:first-child {
+	margin-top: -10px;
+}
+
+#shortcut-list dt {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+#shortcut-list dt span {
+	float: right;
+}
+
+.sweet-alert h2 {
+	font-family: "Raleway";
+	position: relative;
+	/*This would make title slide in, but makes popups*/
+	/*without repositioning have title off of screen*/
+	/*left: -300px;*/
+}
+
+/*==============================================================================
+	Right Column and Blocks
+		- General Selectors
+==============================================================================*/
+
+#right-col {
+	margin-top: 40px;
+	height: 100%;
+	position: relative;
+	right: -800px;
+}
+
+.block {
+	text-align: center;
+	margin-top: 9%;
+	margin-bottom: 9%;
+	margin-left: -40px;
+	margin-right: -40px;
+	height: 16vh;
+	width: auto;
+	overflow-y: none;
+}
+
+.block h4{
+	margin-top: -12px;
+	font-size: 2vh;
+}
+
+.block hr{
+	margin-top: -5px;
+}
+
+
+
+/*==============================================================================
+	Block 1 - Layer Management
+==============================================================================*/
+
+#block1 {
+	margin-top: -27px;
+	height: 23vh;
+	overflow-y: scroll;
+}
+
+#block1 .layer {
+	height: 50px;
+	width: auto;
+	margin: -10px -10px 20px -10px;
+	padding: -15px;
+}
+
+#block1 .selected {
+	background-color: rgb(220,220,220);
+}
+
+#block1 .imgdiv{
+	height: 25px;
+	width: 25px;
+	background-color: grey;
+	margin: -14px;
+	border: none;
+}
+
+#block1 .screenshot{
+	width: 34px;
+	height: 34px;
+	position: relative;
+	top: -17px;
+	left: -17px;
+	border-radius: 3px;
+}
+
+#block1 .layer p{
+	margin-top: -35px;
+	margin-left: 30px;
+	font-size: 1.8vh;
+	text-align: left;
+	font-family: sans-serif;
+}
+
+#block1 .glyphicon {
+	color: rgb(110, 110, 110);
+	cursor: pointer;
+	position: relative;
+	text-decoration: none;
+}
+
+#block1 .glyphicon:hover {
+	color: rgb(0, 0, 0);
+}
+
+#block1 .glyphicon:active {
+	color: rgb(0, 0, 0);
+	text-shadow: 2px 2px 2px #888888;
+}
+
+#block1 #glyph-container {
+	webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+	width: 100%;
+	height: 0;
+}
+
+#block1 #remove-sign{
+	top: -25px;
+	right: -45%;
+}
+
+#block1 #add-sign{
+	top: -25px;
+	left: -45%;
+}
+
+
+
+/*==============================================================================
+	Block 2 - Part Results
+==============================================================================*/
+
+#block2{
+	height: 16vh;
+}
+
+#block2 dl{
+	margin-top: -16px;
+	margin-bottom: -20px;
+	width: 100%;
+}
+
+#block2 dt{
+	text-align: left;
+	font-family: sans-serif;
+	font-weight: normal;
+	font-size: 1.8vh;
+	width: 100%;
+}
+
+#block2 dt span{
+	float: right;
+}
+
+
+
+/*==============================================================================
+	Block 3 - Layer Settings
+==============================================================================*/
+
+#block3 #level-mods{
+	margin-top: -1px;
+	margin-bottom: 0px;
+	margin-right: 60px;
+}
+
+#block3 dl{
+	margin-top: -15px;
+	margin-bottom: -20px;
+	width: 100%;
+}
+
+#block3 dt{
+	text-align: left;
+	font-family: sans-serif;
+	font-weight: normal;
+	font-size: 1.8vh;
+	width: 100%;
+}
+
+#block3 dd{
+	text-align: left;
+	font-family: sans-serif;
+	font-weight: normal;
+	font-size: 1.6vh;
+	width: 100%;
+	margin-left: 10px;
+}
+
+#block3 input {
+	float: right;
+	width: 30px;
+    padding: 0px;
+    font-size: 1.2vh;
+}
+
+#block3 dt input {
+	margin-right: -10px;
+}
+
+
+
+/*==============================================================================
+	Block 4 - Part Settings
+==============================================================================*/
+
+#block4 {
+	height: 16vh;
+}
+
+#block4 dl{
+	margin-top: -15px;
+	margin-bottom: -20px;
+	width: 100%;
+}
+
+#block4 dt{
+	text-align: left;
+	font-family: sans-serif;
+	font-weight: normal;
+	font-size: 1.8vh;
+	width: 100%;
+}
+
+#block4 input{
+	float: right;
+	width: 30px;
+    padding: 0px;
+    font-size: 1.2vh;
+	margin-right: -10px;
+}
+
+#block4 button{
+    height: 2.3vh;
+}
+
+#material-select {
+	margin-right: -10px;
+	float: right;
+    padding: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 10px;
+    min-width: 30px;
+    height: 17px;
+	outline: 0 !important;
+}
+
+#material-select img {
+	width: 20px;
+}
+
+
+
+/*==============================================================================
+	Block 4 - Material Select Popup
+==============================================================================*/
+
+#placeholder {
+	height: 300px;
+}
+
+#material-holder{
+	margin-top: -20px;
+	margin-bottom: -10px;
+	border-color: rgb(28, 216, 65);
+}
+
+.material-tile {
+	height: 60px;
+	margin: -5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+	cursor: pointer;
+	background-color: rgb(250,250,250);
+	position: relative;
+}
+
+.material-tile:hover{
+	background-color: rgb(180, 180, 180);
+	color: black;
+}
+
+.material-tile h1{
+	margin-top: -10px;
+	margin-bottom: -4px;
+	font-size: 15px;
+	float: left;
+	font-weight: bold;
+}
+
+.material-tile h4{
+	margin-top: -8px;
+	font-size: 12px;
+	text-align: left;
+}
+
+.material-tile .material-img{
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin: -15px;
+	margin-right: 20px;
+	border-radius: 4px;
+}
+
+#tile1 {
+	margin-top: -8px;
+}
+
+#tile4 {
+	margin-bottom: -8px;
+}
+
+
+
+/*==============================================================================
+	Block 4 - Matrix Selection Dropdown
+==============================================================================*/
+
+#matrix-button img {
+	width: 20px;
+}
+
+#matrix-button {
+	margin-top: -15px;
+	margin-right: -10px;
+	float: right;
+    padding: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 10px;
+    min-width: 30px;
+    height: 17px;
+	outline: 0 !important;
+	position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 60px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: -10px;
+    top: 3px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 3px;
+    text-decoration: none;
+    display: block;
+	color: rgb(120, 120, 120);
+	background-color: rgb(250,250,250);
+}
+
+.dropdown a:hover {
+	background-color: rgb(180, 180, 180);
+    color: black;
+    cursor: pointer;
+}
+
+.show {
+	display: block;
+}
+
+
+
+/*==============================================================================
+	Block 5 - Draw Settings
+==============================================================================*/
+
+#block5 {
+	height: 14vh;
+}
+
+#block5 dl{
+	margin-top: -15px;
+	margin-bottom: -20px;
+	width: 100%;
+}
+
+#block5 dt{
+	text-align: left;
+	font-family: sans-serif;
+	font-weight: normal;
+	font-size: 1.8vh;
+	margin-top: -0.4vh;
+	width: 100%;
+}
+
+#block5 #grid-size{
+	float: right;
+	width: 30px;
+    padding: 0px;
+    font-size: 1.2vh;
+	margin-right: -10px;
+}
+
+#block5 .checkbox-description {
+	position: relative;
+	top: -2px;
+}

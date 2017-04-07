@@ -1,0 +1,160 @@
+<script>
+   function initializetooltips() {
+   var $myElement = $("#tile1");
+    
+    $myElement.tooltipster({
+    	content: 'Diameter: 0.033 in',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'top'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Tensile Strength: 1600 MPa',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'bottom'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Ultimate Strength: 6370 MPa',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'right'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Density: 0.0470 lb/in^3',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'left'
+    });
+    
+    var $myElement = $("#tile2");
+    
+    $myElement.tooltipster({
+    	content: 'Thread Diameter: 0.021 in',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'top'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Tensile Strength: 1500 MPa',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'bottom'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Ultimate Strength: 7130 MPa',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'right'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Density: 0.0430 lb/in^3',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'left'
+    });
+    
+    var $myElement = $("#tile3");
+    
+    $myElement.tooltipster({
+    	content: 'Weight/Length: 0.427 g/m',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'top'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Density: 1.79 g/cm^3',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'bottom'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Tensile Modulus: 33.5 msi',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'right'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Tensile Strength: 640 ksi',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'left'
+    });
+    
+    var $myElement = $("#tile4");
+    
+    $myElement.tooltipster({
+    	content: 'Thread Diameter: 0.019 in',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'top'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Tensile Strength: 1400 MPa',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'bottom'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Ultimate Strength: 6180 MPa',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'right'
+    });
+    
+    $myElement.tooltipster({
+    	content: 'Density: 0.0430 lb/in^3',
+    	multiple: true,
+    	animation: 'grow',
+    	side: 'left'
+    });
+    }
+   initializetooltips();
+   $(document).ready(function(){
+        $(".sweet-alert h2").animate({left: '0px'});
+        $('.tooltipster').tooltipster({
+          theme: 'tooltipster-light'
+        }); 
+      $(".material-tile").click(function(){
+          $("#material-select").attr("data-material", $(this).attr("data-material"))
+          $("#material-select").text($(this).attr("data-material"));
+          $(this).css("z-index", "1");
+          $(this).animate({right: '-1500px'}, 1000);
+          $(this).rotate({animateTo: 30}, 100);
+          setTimeout(function(){$(".cancel").click()}, 500);
+      });
+   });
+</script>
+<div id="material-holder" class="well">
+   <div class="material-tile well tooltipster" data-material="Hollow Core" id="tile1">
+      <img src="images/hollow-core.gif" alt="Hollow Core" class="img-responsive material-img">
+      <h1>Hollow Core Multi-Functional</h1>
+      <h4><br>This example encompasses a hollow core with fiber optics, carbon fiber and polymer encasement.</h4>
+   </div>
+   <div class="material-tile well tooltipster" data-material="Fiber Optic" id="tile2">
+      <img src="images/fiber-optic.gif" alt="Hollow Core" class="img-responsive material-img">
+      <h1>Multi-Strand Fiber Optic Core</h1>
+      <h4><br>Here the fiber optic core is encapsulated by continuous metal wire, carbon fiber, and polymer encasement.</h4>
+   </div>
+   <div class="material-tile well tooltipster" data-material="Carbon AS4" id="tile3">
+      <img src="images/basic-cc3d.gif" alt="Hollow Core" class="img-responsive material-img">
+      <h1>HexTow® AS4 Carbon Fiber</h1>
+      <h4><br>Here is a really in depth description that gives the user an idea of what he/she is buying</h4>
+   </div>
+   <div class="material-tile well tooltipster" data-material="Carbon IM7" id="tile4">
+      <img src="images/carbon-fiber.gif" alt="Hollow Core" class="img-responsive material-img">
+      <h1>HexTow® IM7 Carbon Fiber</h1>
+      <h4><br>This example has a metal core with a carbon fiber sheath, useful for creating conductive reinforced paths.</h4>
+   </div>
+</div>

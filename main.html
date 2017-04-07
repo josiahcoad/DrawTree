@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>dreamMkr</title>
+
+		<link rel="shortcut icon" href="images/mountain.png" type="imagSe/x-icon">
+		<!--http://hernansartorio.com/jquery-nice-select/-->
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		
+		<!--Google Font-->
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<!-- jQuery Downloaded -->
+		<script src="js/jquery.js"></script>
+
+		<!-- Latest compiled Bootstrap -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<!-- Load the full Paper.js library -->
+		<script src="js/paper-full.js"></script>
+		
+		<!-- SweetAlert Library - http://t4t5.github.io/sweetalert/ -->
+		<script src="libraries/sweetalert/sweetalert.min.js"></script>
+    	<link rel="stylesheet" type="text/css" href="libraries/sweetalert/sweetalert.css">
+    	
+    	<!-- jQuery Rotate -->
+    	<script type="text/javascript" src="libraries/jQueryRotate.js"></script>
+		
+		<!-- Custom Files -->
+		<script type="text/javascript" src="mainscript.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		
+        <!-- add dropdown Menu styles -->
+        <!--<link href="whirlingDropdownMenu/main.css" rel="stylesheet" type="text/css" />-->
+		
+		<!-- Josiah js -->
+		<script src="js/buttonFunc.js"></script>
+		<script src="js/pointManipulation.js"></script>
+		<script src="js/gridStuff.js"></script>
+		<!-- <script src="js/canvasMouseAction.js" type="text/paperscript" canvas="myCanvas"></script> -->
+		
+		<!--tooltip library - http://iamceege.github.io/tooltipster/ -->
+		<link rel="stylesheet" type="text/css" href="libraries/tooltipster/dist/css/tooltipster.bundle.min.css" />
+	    <script type="text/javascript" src="libraries/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+	    <link rel="stylesheet" type="text/css" href="libraries/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+	</head>
+
+	<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<h1 id="part-name" contenteditable="true" align="center">My Tree</h1>
+				<canvas id="myCanvas"></canvas>
+			</div>
+		</div>
+	</div>
+</html>
+
+<script type="text/javascript">
+/*global $ Path Point project Layer getNearPoint drawGrid rmLastCord*/
+/*global addCords getNearCord mkCord getPointfromUser moveCord newProject*/
+
+/*............ GLOBALS ............*/
+// Keeps track if the user is dragging a point
+// will be set to the point that the user is dragging
+// only used by this file
+var selectedCord = null;
+
+/*===================================================================
+    jQuery for when page loads
+===================================================================*/
+
+
+$( document ).ready(function(){
+	newProject();
+})
+
+/*===================================================================
+	Mouse Events
+	- edits globals: dragging (Point object) , path (Paper.js object)
+===================================================================*/
+
+function snapPoint(newpoint){
+	// snap to near point if the snap (and grid) are turned on
+	var gridpoint = null;
+	if ($('#cb-snap').prop('checked')) {
+		var gridPoints = $("#myCanvas").data("gridPoints");
+		var gridpoint = getNearPoint(newpoint, gridPoints, 5);
+	}
+	var path = project.activeLayer.children[0];
+	var pathpoint = getNearPoint(newpoint, path, 5);
+	return pathpoint || gridpoint || newpoint;
+}
+
+function onMouseDown(event) {
+	if ($(document).data("shiftDown") || $(document).data("altDown")){
+		paper.project.activeLayer.children[0].selected=true;
+	}
+	else{
+		if ($('#cb-draw').prop('checked'))
+			mkCord(event.point);
+		else{
+			var path = project.activeLayer.children[0];
+			// if mouse down is close to (virtually on top of an existing point)
+			// assuming the user is selecting that point either for dragging or edit
+			var mousePos = event.point;
+			selectedCord = getNearCord(mousePos, path, 5);
+			if (selectedCord) selectedCord.point._owner.selected = true;
+			if (!selectedCord) {
+				mkCord(event.point)
+			}
+		}
+	}
+}
+
+function onMouseDrag(event) {
+	if ($(document).data("altDown")){
+		var center = paper.project.activeLayer.children[0].position;
+		paper.project.activeLayer.rotate(event.delta.x, center);
+		redrawCords();
+	}
+	else if ($(document).data("shiftDown")){
+		paper.project.activeLayer.translate(event.delta);
+		redrawCords();
+	}
+	else{
+		if ($('#cb-draw').prop('checked'))
+			mkCord(event.point, false);
+		else{
+			if (!selectedCord) rmLastCord();
+			var newpoint = event.point;
+			newpoint = snapPoint(newpoint);
+			if (selectedCord) moveCord(selectedCord, newpoint);
+			if (!selectedCord) mkCord(newpoint);
+		}
+	}
+}
+
+function onMouseUp(event) {
+	if ($('#cb-draw').prop('checked'))
+		project.activeLayer.children[0].simplify()
+	if (selectedCord) selectedCord.point._owner.selected = false;
+	// if the user clicked on a point then ask them where they want to move it
+	if (event.point == event.downPoint && selectedCord){
+		var enteredPoint = getPointfromUser();
+		if (enteredPoint){
+			enteredPoint = scale(enteredPoint, 12, "up");
+			moveCord(selectedCord, enteredPoint);
+		}
+	}
+	selectedCord = null;
+}
+</script>
