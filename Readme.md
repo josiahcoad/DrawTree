@@ -26,7 +26,7 @@
 * page in general
 	- [ ] canvas screenshot button
 	- [ ] Binary Tree autoformat "switch" like this:
-![switch example](https://speckycdn-sdm.netdna-ssl.com/wp-content/uploads/2010/05/css_jquery_button_16.jpg)
+![switch example](http://craftedpixelz.co.uk/blog/wp-content/uploads/2013/02/screenshot-toggle.jpg)
 	- [ ] could have preference options for color, node shape, etc.
 	- [ ] open to all ideas!! Please add away... think what you would want to use:)
 	
