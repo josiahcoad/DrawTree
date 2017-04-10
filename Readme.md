@@ -11,7 +11,7 @@
 
 ### What do you need to know to contribute?
 * languages: CSS, HTML, javascript
-* libraries: paperjs ([get familar with paperjs](https://www.google.com))
+* libraries: paperjs ([get familar with paperjs](http://paperjs.org/))
 
 ### What needs done?
 * paper js
